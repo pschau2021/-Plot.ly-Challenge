@@ -1,4 +1,4 @@
-https://pschau2021.github.io/Plot.ly-Challenge/StarterCode/
+The final deployed application can be found here: https://pschau2021.github.io/Plot.ly-Challenge/StarterCode/
 
 # Plot.ly Homework - Belly Button Biodiversity
 
