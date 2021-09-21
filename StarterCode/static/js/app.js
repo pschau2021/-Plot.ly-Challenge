@@ -1,6 +1,6 @@
 // Declare initial function.
 function init() {
-    // Populate dropdown options with all the individual ID's of the study subjects.
+    // Populate dropdown options with all the individual ID's.
     d3.json("samples.json").then(function(data) {
         d3.select("#selDataset").selectAll("option")
             .data(data.names)
@@ -19,7 +19,7 @@ function optionChanged(id) {
     buildPlot(id)
 };
 
-// Declare plotting function
+// Declare plotting function.
 function buildPlot(id){
     d3.json("samples.json").then(function(data) {
         // Get the index from the selected subject and use it to call the metadata and sample data from the JSON object.
@@ -27,16 +27,16 @@ function buildPlot(id){
         var meta = data.metadata[index];
         var sample = data.samples[index];
     
-        // Collect information from the OTU samples found in the selected subject.
+        // Collect information from the OTU samples.
         var otuIds = sample.otu_ids;
         var otuLabels = sample.otu_labels;
         var sampleValues = sample.sample_values;
     
-        // Collect metadata from the selected subject and save in an array
+        // Collect metadata from the selected subject and save in an array.
         var entries = Object.entries(meta);
         
-        // Declare trace for the bar chart
-        // X: Top 10 OTU sample values found in the selected subject.
+        // Declare trace for the bar chart:
+        // X: Top 10 OTU sample values 
         // Y: Top 10 OTU ID
         // Label: OTU labels
         var barTrace = {
@@ -47,9 +47,9 @@ function buildPlot(id){
             orientation: 'h'
         };
 
-        // Declare trace for the bubble chart
-        // X: OTU sample values found in the selected subject.
-        // Y: OTU ID
+        // Declare trace for the bubble chart:
+        // X: OTU ID
+        // Y: OTU sample values
         // Label: OTU labels
         var bubTrace = {
             x: otuIds,
@@ -63,9 +63,9 @@ function buildPlot(id){
             }
         };
 
-        // Declare trace for the gauge chart
+        // Declare trace for the gauge chart:
         // Value: Get 'wfreq' (washing frequency) from the metadata.
-        // Rante: [null, 9]
+        // Range: [null, 9]
         var gaugeTrace = {
                 value: meta.wfreq,
                 title: { text: "Belly Button Wahshing Frequency<br>Scrubs per Week" },
@@ -138,5 +138,5 @@ function buildPlot(id){
     });
 };
 
-// Run initial function when the program starts
+// Run initial function
 init();
